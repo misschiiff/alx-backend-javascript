@@ -1,27 +1,27 @@
 export default class Pricing {
   constructor(amount, currency) {
-    this._amount = amount;
-    this._currency = currency;
+    this.amount = amount;
+    this.currency = currency;
   }
 
   get amount() {
     return this._amount;
   }
 
-  set amount(n) {
-    this._amount = n;
+  set amount(amount) {
+    this._amount = amount;
   }
 
   get currency() {
     return this._currency;
   }
 
-  set currency(n) {
-    this._currency = n;
+  set currency(currency) {
+    this._currency = currency;
   }
 
   displayFullPrice() {
-    return `${this._amount} ${this._currency.name} (${this._currency.code})`;
+    return `${this.amount} ${this.currency.displayFullCurrency()}`;
   }
 
   static convertPrice(amount, conversionRate) {

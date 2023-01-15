@@ -1,67 +1,46 @@
 interface Student {
   firstName: string,
   lastName: string,
-  age: number,
+  age: Number,
   location: string
 }
 
 const student1: Student = {
-  firstName: 'Bryan',
-  lastName: 'Ike-Adinnu',
-  age: 27,
-  location: 'Nigeria'
+  firstName: "Kalkidan",
+  lastName: "Demes",
+  age: 25,
+  location: "Ethiopia"
 }
 
 const student2: Student = {
-  firstName: 'Somto',
-  lastName: 'Adesina',
-  age: 28,
-  location: 'Edo state'
+  firstName: "Tester",
+  lastName: "unknown",
+  age: 30,
+  location: "Kenya"
 }
 
-const studentList: Array<Student> = [student1, student2];
+const studentsList: Array<Student> = [ student1, student2 ];
 
 const body: HTMLBodyElement = document.getElementsByTagName("body")[0];
-const table: HTMLTableElement = document.createElement('table');
-const thead: HTMLTableSectionElement = document.createElement('thead');
-const th1: HTMLTableCellElement = document.createElement('th');
-const th2: HTMLTableCellElement = document.createElement('th');
+const table: HTMLTableElement = document.createElement("table");
+const thead: HTMLTableSectionElement = document.createElement("thead");
+const tbody: HTMLTableSectionElement = document.createElement("tbody");
+const rowHead: HTMLTableRowElement = thead.insertRow(0);
+const cell1Head: HTMLTableCellElement = rowHead.insertCell(0);
+const cell2Head: HTMLTableCellElement = rowHead.insertCell(1);
 
-th1.innerText = 'First Name';
-th2.innerText = 'Location';
-th1.style.border = '1px solid gray';
-th2.style.border = '1px solid gray';
-th1.style.padding = '.5rem';
-th2.style.padding = '.5rem';
-table.style.border = '1px solid gray';
-table.style.borderCollapse = 'collapse';
-
-
-
-thead.append(th1);
-thead.append(th2);
-
+cell1Head.innerHTML = "firstName";
+cell2Head.innerHTML = "location";
 table.append(thead);
 
+studentsList.forEach((student) => {
+  const row: HTMLTableRowElement = tbody.insertRow(0);
+  const cell1: HTMLTableCellElement = row.insertCell(0);
+  const cell2: HTMLTableCellElement = row.insertCell(1);
 
-studentList.forEach((student) => {
-  const row: HTMLTableRowElement = document.createElement('tr');
-
-  const column1: HTMLTableCellElement = document.createElement('td');
-  const column2: HTMLTableCellElement = document.createElement('td');
-
-  column1.innerText = student.firstName;
-  column2.innerText = student.location;
-
-  column1.style.border = '1px solid gray';
-  column2.style.border = '1px solid gray';
-  column1.style.padding = '.5rem';
-  column2.style.padding = '.5rem';
-
-  row.append(column1);
-  row.append(column2)
-
-  table.append(row);
+  cell1.innerHTML = student.firstName;
+  cell2.innerHTML = student.location;
 });
 
-body.append(table)
+table.append(tbody);
+body.append(table);
